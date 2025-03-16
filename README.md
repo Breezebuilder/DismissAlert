@@ -1,7 +1,12 @@
-# DismissAlert for Balatro
+# ![icon](https://github.com/user-attachments/assets/42a37f6d-46ed-4d38-97b4-886da6ef45ca) DismissAlert for Balatro
+
+<p align="center">
+    <img width="47%" alt="Main menu example" src="https://github.com/user-attachments/assets/2985bfbc-6f05-4301-b9ea-d608638c039f"/>
+    &nbsp;
+    <img width="47%" alt="In-game menu example" src="https://github.com/user-attachments/assets/0da65e18-5cea-410c-8395-6c0254e167f8"/>
+</p>
 
 DismissAlert is a mod for [Balatro](https://store.steampowered.com/app/2379780/Balatro/) which allows the discovery alert icons to be dismissed and hidden with a single click.
-
 
 
 ## Installation
