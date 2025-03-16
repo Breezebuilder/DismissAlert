@@ -1,0 +1,11 @@
+{
+  "id": "DismissAlert",
+  "name": "DismissAlert",
+  "prefix": "dismissalert",
+  "author": ["Breezebuilder"],
+  "description": "Click to dismiss discovery alert icons.",
+  "priority": 100,
+  "main_file": "src/smods.lua",
+  "badge_colour": "cc3c33",
+  "version": "1.0.0"
+}

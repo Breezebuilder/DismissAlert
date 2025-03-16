@@ -1,0 +1,71 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+
+# function create_UIBox_card_alert(args)
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+match_indent = true
+position = "at"
+pattern = '''{n=G.UIT.R, config={align = "cm", r = 0.15, minw = 0.42, minh = 0.42, colour = args.no_bg and G.C.CLEAR or args.bg_col or (args.red_bad and darken(G.C.RED, 0.1) or G.C.RED), draw_layer = 1, emboss = 0.05, refresh_movement = true}, nodes={'''
+payload = '''{n=G.UIT.R, config={hover = args.hover_alt, button = args.button, button_dist = args.button_dist, ref_table = args.ref_table, focus_args = args.focus_args, align = "cm", r = 0.15, minw = 0.42, minh = 0.42, colour = args.no_bg and G.C.CLEAR or args.bg_col or (args.red_bad and darken(G.C.RED, 0.1) or G.C.RED), draw_layer = 1, emboss = 0.05, refresh_movement = true}, nodes={'''
+
+
+# function set_alerts()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+match_indent = true
+position = "at"
+pattern = '''definition = create_UIBox_card_alert({red_bad = true}),'''
+payload = '''
+definition = create_UIBox_card_alert({
+  red_bad = true,
+  hover_alt = true,
+  button = 'dismissalert_dismiss_collection_alert',
+  ref_table = v,
+  button_dist = 0,
+  focus_args = {type = 'none'}
+}),
+'''
+
+
+# function set_alerts()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+match_indent = true
+position = "at"
+pattern = '''G[v.alert_uibox_name].states.collide.can = false'''
+payload = ""
+
+
+# function set_alerts()
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+match_indent = true
+position = "at"
+pattern = '''
+G.collection_alert = UIBox{definition = create_UIBox_card_alert(), config = {align="tri", offset = {x = 0.05, y = -0.05}, major = G.MAIN_MENU_UI:get_UIE_by_ID('collection_button')}}
+G.collection_alert.states.collide.can = false
+'''
+payload = '''
+G.collection_alert = UIBox{
+  definition = create_UIBox_card_alert({
+    hover_alt = true,
+    button = 'dismissalert_dismiss_collection_alert',
+    ref_table = { id = 'collection', alert_uibox_name = 'collection_alert' },
+    button_dist = 0,
+    focus_args = {type = 'none'}
+  }),
+  config = {
+    align="tri",
+    offset = {x = 0.05, y = -0.05},
+    major = G.MAIN_MENU_UI:get_UIE_by_ID('collection_button')
+  }
+}
+'''
